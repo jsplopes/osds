@@ -1,0 +1,11 @@
+/*import React from "react";
+import logo from "./logo.svg";
+
+export const Logo = () => (
+    <img
+        src={
+            "https://portugalinews.eu/wp-content/uploads/2019/08/OutSystems-750x450.jpg"
+        }
+        alt="That's my logo"
+    />
+);*/

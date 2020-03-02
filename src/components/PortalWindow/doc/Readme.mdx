@@ -1,0 +1,58 @@
+---
+name: Portal Window
+menu: Components
+---
+
+import { Playground, Props } from "docz";
+import PortalWindow from "../PortalWindow";
+import { BasicUsage } from "./DocExamples";
+
+# Portal Window
+
+This component provide a way to render children into a DOM node that exists in other window but it's possible to maintain a shared sate.
+
+## How to use
+
+```javascript
+import { PortalWindow } from "@outsystemsui";
+
+export const MyPortalWindow = () => {
+    const [showPortalWindow, setShowPortalWindow] = useState(false);
+
+    return (
+        <>
+            {showPortalWindow ? (
+                <>
+                    <PortalWindow
+                        title={"MY WINDOW"}
+                        onClose={() => setShowPortalWindow(false)}
+                    >
+                        <h1 className={"portal-window-title"}>PORTAL WINDOW</h1>
+                    </PortalWindow>
+                    <button onClick={() => setShowPortalWindow(false)}>
+                        Close Portal Window
+                    </button>
+                </>
+            ) : (
+                <button onClick={() => setShowPortalWindow(true)}>
+                    Open Portal Window
+                </button>
+            )}
+        </>
+    );
+};
+
+export default MyPortalWindow;
+```
+
+## Examples
+
+<BasicUsage />
+
+## Playground
+
+<Playground></Playground>
+
+## API
+
+<Props of={PortalWindow} />

@@ -1,0 +1,42 @@
+import React from "react";
+import { theme, useConfig, ComponentsProvider } from "docz";
+import { ThemeProvider } from "theme-ui";
+import baseComponents from "gatsby-theme-docz/src/components";
+import baseTheme from "gatsby-theme-docz/src/theme";
+import { merge } from "lodash/fp";
+import moraga from "typography-theme-moraga";
+import { toTheme } from "@theme-ui/typography";
+const typography = toTheme(moraga);
+
+const componentsMap = {
+    ...baseComponents
+    /* your custom components */
+};
+
+const Theme = ({ children }) => {
+    const config = useConfig();
+    const a = (config.themeConfig = merge(typography, baseTheme, {
+        colors: {
+            primary: "tomato",
+            secondary: "red",
+            gray: "lightslategray"
+        }
+    }));
+    return (
+        <ThemeProvider theme={a} components={baseComponents}>
+            <ComponentsProvider components={baseComponents}>
+                {children}
+            </ComponentsProvider>
+        </ThemeProvider>
+    );
+};
+
+const themeConfig = merge(typography, baseTheme, {
+    colors: {
+        primary: "tomato",
+        secondary: "red",
+        gray: "lightslategray"
+    }
+});
+
+export default theme(themeConfig)(Theme);

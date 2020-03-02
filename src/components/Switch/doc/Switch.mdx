@@ -1,0 +1,46 @@
+---
+name: Switch
+menu: Components
+---
+
+import { Playground, Props } from "docz";
+import Switch, { Size } from "../Switch";
+import { BasicUsage } from "./DocExamples";
+
+# Switch
+
+This component allows a user to switch on a binary way.
+It is useful when you need to represent the switching between two states (e.g: Off/On, 0/1, False/True).
+
+## How to use
+
+```javascript
+import { Switch } from "@outsystemsui";
+
+const MyComponent = () => {
+   const [checked, setChecked] = useState(false);
+
+    return (
+        <div className="switch-examples">
+            <Switch
+                checked={checked}
+                handleOnChange={state => setChecked(state)}/>
+    );
+};
+
+export default MyComponent;
+```
+
+## Examples
+
+<BasicUsage />
+
+## Playground
+
+<Playground>
+    <Switch checked={true} />
+</Playground>
+
+## API
+
+<Props of={Switch} />
