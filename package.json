@@ -14,7 +14,7 @@
         "docz:dev": "docz dev",
         "docz:build": "docz build",
         "docz:serve": "docz build && docz serve",
-        "generate-declaration": "dts-bundle-generator -o ./dist/index.d.ts ./src/oui.ts",
+        "generate-declaration": "dts-bundle-generator -o ./dist/index.d.ts ./src/index.ts",
         "test": "jest",
         "prepare": "npm run build",
         "prepublishOnly": "npm test"

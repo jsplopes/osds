@@ -1,4 +1,4 @@
-import React, { ReactNode, FC, useState, useEffect } from "react";
+import * as React from "react";
 import ReactDOM from "react-dom";
 
 export interface IWindowProperties {
@@ -46,7 +46,7 @@ export interface IPortalWindowProperties {
     /** Close window when parent is closed */
     autoClose?: boolean;
     /** Window content */
-    children: ReactNode;
+    children: React.ReactNode;
     /** Function called when the window is closed */
     onClose?: () => void;
     /** The title of the window */
@@ -55,7 +55,7 @@ export interface IPortalWindowProperties {
     windowProps?: IWindowProperties;
 }
 
-const PortalWindow: FC<IPortalWindowProperties> = ({
+const PortalWindow: React.FC<IPortalWindowProperties> = ({
     autoClose = false,
     children,
     onClose = () => {},
@@ -103,14 +103,14 @@ const PortalWindow: FC<IPortalWindowProperties> = ({
         width: 400
     }
 }: IPortalWindowProperties) => {
-    const [portalWindow, setPortalWindow] = useState();
+    const [portalWindow, setPortalWindow] = React.useState();
     const container: HTMLDivElement = document.createElement("div");
 
-    useEffect(() => {
+    React.useEffect(() => {
         setPortalWindow((window as any).open("", "", windowPropsToString()));
     }, []);
 
-    useEffect(() => {
+    React.useEffect(() => {
         if (portalWindow != null) {
             copyStyles(document, portalWindow.document);
             portalWindow.document.body.appendChild(container);

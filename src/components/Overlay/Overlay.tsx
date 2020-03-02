@@ -1,4 +1,4 @@
-import React, { ReactNode, FC } from "react";
+import * as React from "react";
 import classNames from "classnames";
 import "./Overlay.scss";
 
@@ -13,9 +13,9 @@ export interface IOverlayProperties {
     /** Custom Position class, it possible to pass a class that will manipulate the overlay position you can use **top**, **bottom**, **left** and **right** css properties to place the overlay*/
     customPosition?: string;
     /** React Node element that will be decorated with the overlay */
-    children: ReactNode;
+    children: React.ReactNode;
     /** React node element that will decorate */
-    overlay: ReactNode;
+    overlay: React.ReactNode;
     /** Center the overlay React Node on the position defined */
     overlayCentered?: boolean;
     /** Decoration position: **TopLeft**, **BottomLeft**, **TopRight** or **BottomRight** */
@@ -23,7 +23,7 @@ export interface IOverlayProperties {
 }
 
 /** This component will can be used to overlay two components. It is possible to define a position or give it a custom position. */
-const Overlay: FC<IOverlayProperties> = ({
+const Overlay: React.FC<IOverlayProperties> = ({
     customPosition,
     children,
     overlay,
