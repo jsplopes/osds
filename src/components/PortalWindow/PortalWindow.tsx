@@ -103,7 +103,7 @@ const PortalWindow: React.FC<IPortalWindowProperties> = ({
         width: 400
     }
 }: IPortalWindowProperties) => {
-    const [portalWindow, setPortalWindow] = React.useState();
+    const [portalWindow, setPortalWindow] = React.useState(null);
     const container: HTMLDivElement = document.createElement("div");
 
     React.useEffect(() => {
@@ -111,7 +111,7 @@ const PortalWindow: React.FC<IPortalWindowProperties> = ({
     }, []);
 
     React.useEffect(() => {
-        if (portalWindow != null) {
+        if (portalWindow !== null) {
             copyStyles(document, portalWindow.document);
             portalWindow.document.body.appendChild(container);
             portalWindow.document.title = title || "A React portal window";
