@@ -2,3 +2,4 @@ node_modules
 dist
 reports
 .docz
+package-lock.json
