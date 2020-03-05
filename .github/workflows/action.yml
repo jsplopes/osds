@@ -18,6 +18,8 @@ jobs:
             - run: npm run build --if-present
             - run: npm test
             - run: npm version patch
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_PACKAGES_TOKEN }}
             - run: npm publish
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.GITHUB_PACKAGES_TOKEN }}
