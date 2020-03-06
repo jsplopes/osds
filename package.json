@@ -16,8 +16,8 @@
         "docz:serve": "docz build && docz serve",
         "generate-declaration": "dts-bundle-generator -o ./dist/index.d.ts ./src/index.ts",
         "test": "jest",
-        "publish:patch": "np patch --no-publish --yolo",
-        "gitlogin": "npm-cli-login -u jsplopes -p 6b2e6b11e9d1ee152222bd353dbed090a452eef1 -e jsplopes@gmail.com -r https://npm.pkg.github.com"
+        "gitlogin": "npm-cli-login -u jsplopes -p ${GITHUB_PACKAGES_TOKEN} -e jsplopes@gmail.com -r https://npm.pkg.github.com",
+        "patch": "np patch --no-publish --yolo --no-release-draft"
     },
     "author": "jsplopes",
     "license": "MIT",
@@ -26,7 +26,7 @@
         "url": "git+https://github.com/jsplopes/osds.git"
     },
     "publishConfig": {
-        "registry": "https://npm.pkg.github.com"
+        "registry": "https://npm.pkg.github.com/@jsplopes"
     },
     "dependencies": {
         "react": "^16.13.0",
