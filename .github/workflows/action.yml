@@ -17,9 +17,9 @@ jobs:
             - run: npm install
             #- run: npm run build --if-present
             - run: npm test
-            - name: Set GibHub Variables
-              run: git config --global user.email "jsplopes@gmail.com"
-              run: git config --global user.name "jsplopes"
+            #- name: Set GibHub Variables
+            - run: git config --global user.email "jsplopes@gmail.com"
+            - run: git config --global user.name "jsplopes"
             - run: npm run publish:patch
             #  - run: npm version patch
             #- uses: shawnbot/npm-publish-action@master
