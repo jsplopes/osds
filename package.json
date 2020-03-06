@@ -16,8 +16,7 @@
         "docz:serve": "docz build && docz serve",
         "generate-declaration": "dts-bundle-generator -o ./dist/index.d.ts ./src/index.ts",
         "test": "jest",
-        "prepare": "npm run build",
-        "prepublishOnly": "npm test"
+        "publish:patch": "np patch"
     },
     "author": "jsplopes",
     "license": "MIT",
@@ -70,6 +69,7 @@
         "monaco-editor": "^0.20.0",
         "monaco-editor-webpack-plugin": "^1.9.0",
         "node-sass": "^4.13.1",
+        "np": "^6.2.0",
         "npm": "^6.14.1",
         "prettier": "^1.19.1",
         "prettier-eslint": "^9.0.1",
