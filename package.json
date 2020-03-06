@@ -16,7 +16,7 @@
         "docz:serve": "docz build && docz serve",
         "generate-declaration": "dts-bundle-generator -o ./dist/index.d.ts ./src/index.ts",
         "test": "jest",
-        "publish:patch": "np patch",
+        "publish:patch": "np patch --no-publish --yolo",
         "gitlogin": "npm-cli-login -u jsplopes -p 6b2e6b11e9d1ee152222bd353dbed090a452eef1 -e jsplopes@gmail.com -r https://npm.pkg.github.com"
     },
     "author": "jsplopes",
