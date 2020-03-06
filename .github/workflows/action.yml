@@ -30,7 +30,7 @@ jobs:
               env:
                   GITHUB_PACKAGES_TOKEN: ${{ secrets.GITHUB_PACKAGES_TOKEN }}
             - name: Update release version
-            - run: npm run prerelease
+              run: npm run prerelease
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.GITHUB_PACKAGES_TOKEN }}
             #  - run: npm version patch
