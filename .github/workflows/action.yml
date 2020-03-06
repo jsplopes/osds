@@ -1,4 +1,4 @@
-name: OSDS CI
+name: Build
 
 on: [push]
 
@@ -13,20 +13,24 @@ jobs:
               with:
                   node-version: "12.x"
                   registry-url: "https://npm.pkg.github.com"
-            - run: npm install
+            - name: Install dependencies
+              run: npm install
             #- run: npm run build --if-present
-            - run: npm test
+            - name: Running Tests
+              run: npm test
             #- name: Set GibHub Variables
             #  run: git config --global user.email "jsplopes@gmail.com"
             #  run: git config --global user.name "jsplopes"
-            - name: Commit report
+            - name: Setup GibHub Variables
               run: |
                   git config --global user.name 'jsplopes'
                   git config --global user.email 'jsplopes@gmail.com'
-            - run: npm run gitlogin
+            - name: Login to Github
+              run: npm run gitlogin
               env:
                   GITHUB_PACKAGES_TOKEN: ${{ secrets.GITHUB_PACKAGES_TOKEN }}
-            - run: npm run patch
+            - name: Update release version
+            - run: npm run prerelease
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.GITHUB_PACKAGES_TOKEN }}
             #  - run: npm version patch
@@ -35,7 +39,8 @@ jobs:
             #      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             # NOTE: use the NODE_ prefix instead of NPM_ here!
             #      NODE_AUTH_TOKEN: ${{ secrets.GITHUB_PACKAGES_TOKEN }}
-            - run: npm publish
+            - name: Publish package to Github
+              run: npm publish
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.GITHUB_PACKAGES_TOKEN }}
             - name: Upload coverage to Codecov

@@ -17,7 +17,8 @@
         "generate-declaration": "dts-bundle-generator -o ./dist/index.d.ts ./src/index.ts",
         "test": "jest",
         "gitlogin": "npm-cli-login -u jsplopes -p ${GITHUB_PACKAGES_TOKEN} -e jsplopes@gmail.com -r https://npm.pkg.github.com",
-        "patch": "np patch --no-publish --yolo --no-release-draft"
+        "patch": "np patch --no-publish --yolo --no-release-draft",
+        "prerelease": "np patch --no-publish --yolo --no-release-draft"
     },
     "author": "jsplopes",
     "license": "MIT",
