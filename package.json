@@ -8,9 +8,9 @@
         "dist"
     ],
     "scripts": {
-        "build": "npm run generate-declaration && npm run build:prod",
-        "build:dev": "webpack --mode development",
-        "build:prod": "webpack --mode production",
+        "build": "npm run build:prod",
+        "build:dev": "npm run generate-declaration && webpack --mode development",
+        "build:prod": "npm run generate-declaration && webpack --mode production",
         "docz:dev": "docz dev",
         "docz:build": "docz build",
         "docz:serve": "docz build && docz serve",
@@ -18,7 +18,7 @@
         "test": "jest",
         "gitlogin": "npm-cli-login -u jsplopes -p ${GITHUB_PACKAGES_TOKEN} -e jsplopes@gmail.com -r https://npm.pkg.github.com",
         "patch": "np patch --no-publish --yolo --no-release-draft",
-        "prerelease": "np prerelease --no-publish --yolo --no-release-draft"
+        "version:prerelease": "np prerelease --no-publish --yolo --no-release-draft"
     },
     "author": "jsplopes",
     "license": "MIT",
