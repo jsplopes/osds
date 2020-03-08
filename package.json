@@ -1,6 +1,6 @@
 {
     "name": "osds",
-    "version": "1.0.5-2",
+    "version": "1.0.5-rc.2",
     "description": "OS Design System",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
