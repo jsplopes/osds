@@ -18,8 +18,9 @@
         "test": "jest",
         "gitlogin": "npm-cli-login -u jsplopes -p ${GITHUB_PACKAGES_TOKEN} -e jsplopes@gmail.com -r https://npm.pkg.github.com",
         "np:major": "np major --no-publish --yolo --no-release-draft --any-branch",
+        "np:minor": "np minor --no-publish --yolo --no-release-draft --any-branch",
         "np:patch": "np patch --no-publish --yolo --no-release-draft --any-branch",
-        "np:prerelease": "np prerelease --no-publish --yolo --no-release-draft --any-branch"
+        "np:prerelease": "np prerelease --no-publish --yolo --no-release-draft --any-branch --tag=dev"
     },
     "author": "jsplopes",
     "license": "MIT",
