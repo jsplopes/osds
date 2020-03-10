@@ -9,3 +9,5 @@
 ![Build](https://github.com/jsplopes/osds/workflows/Build/badge.svg?branch=master&event=check_run)
 
 React design system to test
+
+more to read...
