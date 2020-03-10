@@ -29,6 +29,10 @@ jobs:
               with:
                   token: ${{ secrets.CODECOV_TOKEN }}
                   file: ./reports/tests/coverage/lcov.info
+            - name: Upload coverage to Codacy
+                run: |
+                    export CODACY_PROJECT_TOKEN=${{ secrets.CODACY_PROJECT_TOKEN }}
+                    bash <(curl -Ls https://coverage.codacy.com/get.sh)
             - name: Update package version to prerelase
               run: |
                   git config --global user.name 'jsplopes'
