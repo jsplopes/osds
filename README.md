@@ -1,6 +1,6 @@
 # osds
 
-![Build](https://github.com/jsplopes/osds/workflows/Build/badge.svg)
+![Build](https://github.com/jsplopes/osds/workflows/Build/badge.svg?branch=work)
 
 [![Code Quality](https://deepscan.io/api/teams/7871/projects/9965/branches/133304/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=7871&pid=9965&bid=133304)
 
