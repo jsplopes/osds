@@ -34,7 +34,7 @@ jobs:
                   git config --global user.name 'jsplopes'
                   git config --global user.email 'jsplopes@gmail.com'
                   npm run gitlogin
-                  npm run version:prerelease
+                  npm run np:prerelease
               env:
                   GITHUB_PACKAGES_TOKEN: ${{ secrets.GITHUB_PACKAGES_TOKEN }}
                   NODE_AUTH_TOKEN: ${{ secrets.GITHUB_PACKAGES_TOKEN }}
