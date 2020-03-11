@@ -3,3 +3,4 @@ dist
 reports
 .docz
 package-lock.json
+test-report.xml
