@@ -35,6 +35,11 @@ jobs:
                   curl -Ls -o codacy-coverage-reporter "$(curl -Ls https://api.github.com/repos/codacy/codacy-coverage-reporter/releases/latest | jq -r '.assets | map({name, browser_download_url} | select(.name | contains("codacy-coverage-reporter-linux"))) | .[0].browser_download_url')"
                   chmod +x codacy-coverage-reporter
                   ./codacy-coverage-reporter report -l Javascript -r ./reports/tests/coverage/lcov.info
+            - name: SonarCloud Scan
+              uses: sonarsource/sonarcloud-github-action@work
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_PACKAGES_TOKEN }}
+                  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
             - name: Update package version to prerelase
               run: |
                   git config --global user.name 'jsplopes'
