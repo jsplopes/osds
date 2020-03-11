@@ -39,7 +39,6 @@ jobs:
               uses: sonarsource/sonarcloud-github-action@master
               with:
                   projectBaseDir: ./src
-              env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_PACKAGES_TOKEN }}
                   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
             - name: Update package version to prerelase
