@@ -1,0 +1,50 @@
+name: Build
+
+on: [push]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2
+            - name: Use Node.js
+              uses: actions/setup-node@v1
+              with:
+                  node-version: "12.x"
+                  registry-url: "https://npm.pkg.github.com"
+            - name: Install dependencies
+              run: npm install
+            #- run: npm run build --if-present
+            - name: Running Tests
+              run: npm test
+            #- name: Set GibHub Variables
+            #  run: git config --global user.email "jsplopes@gmail.com"
+            #  run: git config --global user.name "jsplopes"
+            - name: Setup GibHub Variables
+              run: |
+                  git config --global user.name 'jsplopes'
+                  git config --global user.email 'jsplopes@gmail.com'
+            - name: Login to Github
+              run: npm run gitlogin
+              env:
+                  GITHUB_PACKAGES_TOKEN: ${{ secrets.GITHUB_PACKAGES_TOKEN }}
+            - name: Update release version
+              run: npm run prerelease
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_PACKAGES_TOKEN }}
+            #  - run: npm version patch
+            #- uses: shawnbot/npm-publish-action@master
+            #  env:
+            #      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            # NOTE: use the NODE_ prefix instead of NPM_ here!
+            #      NODE_AUTH_TOKEN: ${{ secrets.GITHUB_PACKAGES_TOKEN }}
+            - name: Publish package to Github
+              run: npm publish
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_PACKAGES_TOKEN }}
+            - name: Upload coverage to Codecov
+              uses: codecov/codecov-action@v1
+              with:
+                  token: ${{ secrets.CODECOV_TOKEN }}
+                  file: ./reports/tests/coverage/lcov.info
