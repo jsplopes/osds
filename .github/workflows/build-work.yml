@@ -1,0 +1,56 @@
+name: Build
+
+on:
+    push:
+        branches:
+            - work
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout work branch
+              uses: actions/checkout@v2
+            - name: Set up enviroment
+              uses: actions/setup-node@v1
+              with:
+                  node-version: "12.x"
+                  registry-url: "https://npm.pkg.github.com"
+                  scope: "@jsplopes"
+            - name: Install dependencies
+              run: npm install
+            - name: Run build
+              run: npm run build:dev
+            - name: Run Tests
+              run: npm test
+            - name: Upload coverage to Codecov
+              uses: codecov/codecov-action@v1
+              with:
+                  token: ${{ secrets.CODECOV_TOKEN }}
+                  file: ./reports/tests/coverage/lcov.info
+            - name: Upload coverage to Codacy
+              run: |
+                  export CODACY_PROJECT_TOKEN=${{ secrets.CODACY_PROJECT_TOKEN }}
+                  curl -Ls -o codacy-coverage-reporter "$(curl -Ls https://api.github.com/repos/codacy/codacy-coverage-reporter/releases/latest | jq -r '.assets | map({name, browser_download_url} | select(.name | contains("codacy-coverage-reporter-linux"))) | .[0].browser_download_url')"
+                  chmod +x codacy-coverage-reporter
+                  ./codacy-coverage-reporter report -l Javascript -r ./reports/tests/coverage/lcov.info
+            - name: SonarCloud Scan
+              uses: sonarsource/sonarcloud-github-action@master
+              with:
+                  projectBaseDir: ./src
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_PACKAGES_TOKEN }}
+                  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+            - name: Update package version to prerelase
+              run: |
+                  git config --global user.name 'jsplopes'
+                  git config --global user.email 'jsplopes@gmail.com'
+                  npm run gitlogin
+                  npm run np:prerelease
+              env:
+                  GITHUB_PACKAGES_TOKEN: ${{ secrets.GITHUB_PACKAGES_TOKEN }}
+                  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_PACKAGES_TOKEN }}
+            - name: Publish package to Github
+              run: npm publish --tag work
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_PACKAGES_TOKEN }}
