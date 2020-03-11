@@ -40,8 +40,6 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_PACKAGES_TOKEN }}
                   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-              with:
-                  projectBaseDir: ./src
             - name: Update package version to prerelase
               run: |
                   git config --global user.name 'jsplopes'
