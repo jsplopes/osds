@@ -37,7 +37,8 @@ jobs:
                   ./codacy-coverage-reporter report -l Javascript -r ./reports/tests/coverage/lcov.info
             - name: SonarCloud Scan
               uses: sonarsource/sonarcloud-github-action@master
-              env:
+              with:
+                  projectBaseDir: ./src
                   GITHUB_TOKEN: ${{ secrets.GITHUB_PACKAGES_TOKEN }}
                   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
             - name: Update package version to prerelase
