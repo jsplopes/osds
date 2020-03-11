@@ -24,6 +24,11 @@
     },
     "author": "jsplopes",
     "license": "MIT",
+    "jestSonar": {
+        "reportPath": "./reports/tests",
+        "reportFile": "test-reporter.xml",
+        "indent": 4
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/jsplopes/osds.git"

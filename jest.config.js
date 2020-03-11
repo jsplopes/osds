@@ -32,7 +32,7 @@ module.exports = {
     ],
 
     // A list of reporter names that Jest uses when writing coverage reports
-    coverageReporters: ["text", "html", "lcov"],
+    coverageReporters: ["lcov"],
 
     // An object that configures minimum threshold enforcement for coverage results
     // coverageThreshold: null,
@@ -96,8 +96,8 @@ module.exports = {
         [
             "jest-html-reporters",
             {
-                publicPath: "./reports/tests/unit",
-                filename: "index.html"
+                publicPath: "./reports/tests",
+                filename: "unit-report.html"
             }
         ]
     ],
